@@ -18,10 +18,15 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	while (format[i])
+		while (format[i])
 	{
-		if (format[i] == '%' && format[i + 1])
+		if (format[i] == '%')
 		{
+			if (format[i + 1] == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
 			i++;
 			if (format[i] == 'c')
 			{
@@ -46,7 +51,7 @@ int _printf(const char *format, ...)
 				write(1, "%", 1);
 				count++;
 			}
-			/* skip unsupported specifiers */
+			/* unsupported specifiers are ignored */
 		}
 		else
 		{
@@ -55,6 +60,9 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
+
+	 
+		    
 
 	va_end(args);
 	return (count);
