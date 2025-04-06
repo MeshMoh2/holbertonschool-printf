@@ -1,9 +1,8 @@
 #include "main.h"
 
 /**
- * print_char - Prints a single character
- * @args: Argument list
- *
+ * print_char - Prints a character
+ * @args: va_list
  * Return: Number of characters printed
  */
 int print_char(va_list args)
@@ -16,8 +15,7 @@ int print_char(va_list args)
 
 /**
  * print_string - Prints a string
- * @args: Argument list
- *
+ * @args: va_list
  * Return: Number of characters printed
  */
 int print_string(va_list args)
@@ -39,24 +37,10 @@ int print_string(va_list args)
 
 /**
  * print_percent - Prints a percent sign
- *
  * Return: Number of characters printed
  */
 int print_percent(void)
 {
 	write(1, "%", 1);
 	return (1);
-}
-
-/**
- * print_unknown - Prints unknown format as literal
- * @specifier: The unknown format specifier
- *
- * Return: Number of characters printed
- */
-int print_unknown(char specifier)
-{
-	write(1, "%", 1);
-	write(1, &specifier, 1);
-	return (2);
 }

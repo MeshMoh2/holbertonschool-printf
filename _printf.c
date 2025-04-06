@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * _printf - Produces output according to a format
- * @format: A string containing zero or more format specifiers
+ * _printf - Custom printf function
+ * @format: Format string with specifiers
  *
- * Return: The number of characters printed (excluding the null byte)
+ * Return: Number of characters printed
  */
 int _printf(const char *format, ...)
 {
@@ -29,6 +29,8 @@ int _printf(const char *format, ...)
 				count += print_string(args);
 			else if (format[i] == '%')
 				count += print_percent();
+			else if (format[i] == 'd' || format[i] == 'i')
+				count += print_int(args);
 			else
 				count += print_unknown(format[i]);
 		}
